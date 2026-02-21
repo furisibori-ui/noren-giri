@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="theme-color" content="#1a0a0a">
+  <title>THE NOREN GIRI - のれん切り</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&family=Zen+Antique&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div id="app">
+    <div id="title-screen" aria-label="メニュー">
+      <div class="title-wrap">
+        <img id="logo" src="assets/images/logo.png" alt="THE NOREN GIRI" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+        <h1 class="title-fallback">THE NOREN GIRI</h1>
+        <p class="subtitle">のれん切り</p>
+        <p class="tagline">天文学的な損切りを目指せ</p>
+        <button id="start-btn" class="btn-primary" type="button">スタート</button>
+        <button id="ranking-btn" class="btn-secondary btn-ranking" type="button">ランキング</button>
+      </div>
+    </div>
+    <div id="ranking-overlay" class="hidden" aria-hidden="true">
+      <div class="ranking-panel">
+        <h2 class="ranking-title">ランキング</h2>
+        <ol id="ranking-list"></ol>
+        <button id="ranking-close" class="btn-secondary" type="button">閉じる</button>
+      </div>
+    </div>
+
+    <div id="game-screen" class="hidden">
+      <canvas id="game-canvas"></canvas>
+      <div id="ui-overlay">
+        <div id="score-display">
+          <span id="score-label">損切り総額</span>
+          <div id="score-value" aria-live="polite">0円</div>
+        </div>
+        <div id="combo-display">
+          <span id="combo-value">0</span> COMBO
+        </div>
+        <div id="deficit-gauge-wrap">
+          <span class="gauge-label">累積赤字</span>
+          <div id="deficit-gauge"><div id="deficit-fill"></div></div>
+        </div>
+        <div id="special-gauge-wrap">
+          <span class="gauge-label">必殺</span>
+          <div id="special-gauge"><div id="special-fill"></div></div>
+          <button id="special-btn" class="btn-special hidden" type="button" aria-label="鬼十速斬">鬼十速斬</button>
+        </div>
+      </div>
+      <div id="popup-container"></div>
+      <div id="gameover-overlay" class="hidden">
+        <div class="gameover-wrap">
+          <h2>GAME OVER</h2>
+          <p class="final-label">あなたの損切り総額</p>
+          <div id="final-score" aria-live="polite">0円</div>
+          <div id="record-area" class="record-area">
+            <label for="record-name" class="record-label">名前（5文字まで）</label>
+            <input type="text" id="record-name" class="record-input" maxlength="5" placeholder="ニックネーム" autocomplete="off">
+            <button id="record-btn" class="btn-primary btn-record" type="button">記録する</button>
+            <p id="record-msg" class="record-msg hidden"></p>
+          </div>
+          <div id="share-area">
+            <button id="share-btn" class="btn-primary">結果をシェア</button>
+            <p class="share-hint">シェア文言をコピーしました</p>
+          </div>
+          <button id="retry-btn" class="btn-secondary" type="button">戻る</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
